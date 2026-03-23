@@ -343,7 +343,7 @@ The mongoimport API: `mongoimport.MongoImport{ToolOptions: opts, IngestOptions: 
 
 - [x] **Step 3: Convert `decimal128.js`** (NEW) — `TestRoundTripDecimal128` in `mongoimport/mongoimport_test.go`: inserts `{_id:"foo", x:Decimal128("123456789012345678901234567890")}` (>2^64), exports, drops, imports, asserts full document equality.
 
-- [ ] **Step 4: Convert `fields.js`** (EXTEND) — Add to existing field tests: `--fieldFile` option, nested dotted field names, and CSV rows with more fields than the header.
+- [x] **Step 4: Convert `fields.js`** (EXTEND) — `TestImportFields` in `mongoimport/mongoimport_test.go`: covers `--headerline`, `--fields`, `--fieldFile`, `--ignoreBlanks`, nested dotted names, and no-field-spec error for both CSV and TSV via `testImportFieldsForFormat`. `TestImportExtraFields` covers columns beyond the fieldFile mapping.
 
 - [ ] **Step 5: Convert `import_document_validation.js`** (NEW) — `TestImportDocumentValidation`: create a collection with a `$jsonSchema` validator, import documents that violate it, verify rejection; test `--bypassDocumentValidation` and `--stopOnError` with validation errors.
 
